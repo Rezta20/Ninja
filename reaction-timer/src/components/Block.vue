@@ -22,7 +22,7 @@ export default {
     startTimer() {
       this.timer = setInterval(() => {
         this.reactionTime += 10;
-      }, 100);
+      }, 10);
     },
     stopTimer() {
       clearInterval(this.timer);
