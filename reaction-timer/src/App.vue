@@ -1,7 +1,7 @@
 <template>
   <h1>Reaction Timer</h1>
   <button @click="start" :disabled="isPlaying">Start</button>
-  <Block v-if="isPlaying" :bind="delay" />
+  <Block v-if="isPlaying" :delay="delay" />
 </template>
 
 <script>
@@ -19,7 +19,6 @@ export default {
     start() {
       this.isPlaying = true;
       this.delay = 2000 + Math.random() * 5000;
-      console.log(this.delay);
     },
   },
 };
