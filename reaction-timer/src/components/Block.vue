@@ -14,19 +14,20 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.showBlock = true;
       this.startTimer();
+      this.showBlock = true;
     }, this.delay);
   },
   methods: {
     startTimer() {
       this.timer = setInterval(() => {
         this.reactionTime += 10;
-      }, 10);
+      }, 100);
     },
     stopTimer() {
       clearInterval(this.timer);
       console.log(this.reactionTime);
+      this.$emit("end", this.reactionTime);
     },
   },
 };
