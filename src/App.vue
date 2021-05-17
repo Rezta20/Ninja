@@ -1,17 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>{{ title }}</h1>
+  <input type="text" ref="name" />
+  <button @click="handleClick">Click me</button>
+  <div v-if="showModel">
+    <Model :header="header" :text="text" theme="sale" @close="toggleModel">
+      <template v-slot:links>
+        <a href="#"> sign up now</a>
+        <a href="#"> more info</a>
+      </template>
+      <h1>Outside of the template</h1>
+      <p>Ouside of the paragraph</p>
+    </Model>
+  </div>
+  <button @click="toggleModel">open model</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Model from "./components/Model.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "test",
+  components: { Model },
+  data() {
+    return {
+      title: "My First Vue App",
+      header: "comes from App.vue header",
+      text: "comes from App.vue text",
+      showModel: false
+    };
+  },
+  methods: {
+    handleClick() {
+      console.log(this.$refs.name);
+      this.$refs.name.classList.add("active");
+      this.$refs.name.focus();
+    },
+    toggleModel() {
+      this.showModel = !this.showModel;
+    }
   }
-}
+};
 </script>
 
 <style>
