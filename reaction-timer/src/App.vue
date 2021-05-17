@@ -2,14 +2,16 @@
   <h1>Reaction Timer</h1>
   <button @click="start" :disabled="isPlaying">Start</button>
   <Block v-if="isPlaying" :delay="delay" @end="gameEnd" />
-  <p v-if="showResult">Your time is {{ time }} ms</p>
+  <Result v-if="showResult" :time="time" />
 </template>
 
 <script>
 import Block from "./components/Block.vue";
+import Result from "./components/Result.vue";
+
 export default {
   name: "App",
-  components: { Block },
+  components: { Block, Result },
   data() {
     return {
       isPlaying: false,
